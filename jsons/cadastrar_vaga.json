@@ -1,0 +1,21 @@
+{
+    "ad_title": "Titulo do Anúncio",
+    "description": "Descrição do Anúncio",
+    "address": "Endereço do Anúncio",
+    "price_per_people": "Preço por Pessoa",
+    "available_vacancies": "Vagas Disponíveis",
+    "home_preferences": {
+        "fumante": 0,
+        "limpeza": 1,
+        "silencio": 2,
+        "pet": 1,
+        "festas": 0
+    },
+    "property_pictures": [
+        {
+            "name": "Nome da Imagem",
+            "type": "Tipo da Imagem",
+            "data": "Dados da Imagem"
+        }
+    ]
+}

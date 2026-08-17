@@ -1,0 +1,10 @@
+export { default as PeoplePage } from "./PeoplePage";
+export { default as MatchesPage } from "./MatchesPage";
+export * from "./CreateRoomPage";
+export * from "./EditProfilePage";
+export { default as HomePage } from "./HomePage";
+export * from "./LoginPage";
+export * from "./PreferencesPage";
+export * from "./RegisterPage";
+export { default as VacancyDescriptionPage } from "./VacancyDescriptionPage";
+export { default as PublicUserPage } from "./PublicUserPage";

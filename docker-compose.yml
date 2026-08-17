@@ -1,0 +1,42 @@
+# version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:${APP_PORT}" # Porta do FastAPI: mapeia a porta 8080 do contêiner para a porta 8080 do host
+    volumes:
+      - ./backend/app:/app/app # Monta apenas o código da aplicação para desenvolvimento
+      - ./backend/interface:/app/interface # Monta pasta de controllers/DTOs
+      - ./backend/migrations:/app/migrations # Monta pasta de migrations para sincronizar com host
+      - ./backend/main.py:/app/main.py # Monta o arquivo main.py
+      - ./requirements.txt:/requirements.txt # Garante que as mudanças no requirements.txt sejam vistas
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine # Versão mais leve do PostgreSQL
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data # Persiste os dados do banco de dados
+    ports:
+      - "${POSTGRES_PORT}:5432" # Mapeia a porta do PostgreSQL para o host (opcional, mas útil para acesso direto)
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  pg_data: # Define o volume para persistência dos dados do PostgreSQL

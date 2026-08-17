@@ -1,0 +1,20 @@
+[
+    {
+        "vacancy_id": 1,
+        "rate": 1,
+        "vacancy_type": 1,
+        "profile_path_picture": "path/to/picture.jpg",
+        "address": "123 Main St, Anytown, USA",
+        "price": 123,
+        "total_rooms": 3
+    },
+    {
+        "vacancy_id": 2,
+        "rate": 2,
+        "vacancy_type": 2,
+        "profile_path_picture": "path/to/picture2.jpg",
+        "address": "456 Elm St, Othertown, USA",
+        "price": 456,
+        "total_rooms": 4
+    }
+]
